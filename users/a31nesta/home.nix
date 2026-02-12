@@ -1,22 +1,33 @@
-{ config, pkgs, inputs, ... }: {
-	# imports = [ inputs.noctalia.homeModules.default ];
+{
+  config,
+  pkgs,
+  ...
+}:
+{
+  home.username = "a31nesta";
+  home.homeDirectory = "/home/a31nesta";
+  home.stateVersion = "25.05";
 
-	home.username = "a31nesta";
-	home.homeDirectory = "/home/a31nesta";
-	home.stateVersion = "25.05";
+  programs.home-manager.enable = true;
 
-	programs.home-manager.enable = true;
+  home.packages = with pkgs; [
+    kitty
+    kdePackages.qtsvg
+    kdePackages.dolphin
+    zed-editor
+    nil
+    nixd
 
-	home.packages = with pkgs; [
-		kitty
-		kdePackages.qtsvg
-		kdePackages.dolphin
-		zed-editor
-		nil
+    vlc
+  ];
 
-		vlc
-		obsidian
-	];
+  programs.git = {
+    enable = true;
+    settings = {
+      user.name = "A31Nesta";
+      user.email = "a31nesta@black.observer";
+    };
+  };
 
-	home.file.".config/niri/config.kdl".source = ./config.kdl;
+  home.file.".config/niri/config.kdl".source = ./config.kdl;
 }
