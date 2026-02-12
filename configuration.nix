@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Bootloader.
@@ -56,6 +56,7 @@
 
   # Niri :)
   programs.niri.enable = true;
+  security.polkit.enable = true;
 
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
@@ -100,9 +101,6 @@
       "plugdev"
       "dialout"
     ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
 
   # Install other programs
@@ -130,6 +128,7 @@
     neovim
     wget
     home-manager
+    xwayland-satellite
     # vlc      # Configure these in home-manager
     # obsidian
   ];

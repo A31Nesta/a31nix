@@ -1,7 +1,14 @@
-{ pkgs, inputs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${system}.default
-    inputs.zen-browser.packages.${system}.default
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  sys = pkgs.stdenv.hostPlatform.system;
+in
+{
+  environment.systemPackages = [
+    inputs.noctalia.packages.${sys}.default
+    inputs.zen-browser.packages.${sys}.default
   ];
 }

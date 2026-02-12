@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # Hardware Config
   imports = [
     ./a31nix-hardware.nix
@@ -6,6 +7,13 @@
 
   # Hostname
   networking.hostName = "a31nix";
+
+  # Nvidia config in main PC only
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
+  # Wayland with Nvidia
+  hardware.nvidia.modesetting.enable = true;
 
   # State Version
   # -------------
