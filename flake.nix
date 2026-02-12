@@ -24,22 +24,67 @@
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-        nixosConfigurations.bos-s3 = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-                # import the previous configuration.nix
-                ./configuration.nix
-                # Noctalia
-                ./noctalia.nix
+        nixosConfigurations = {
+            # Main system
+            a31nix = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
+                modules = [
+                    # Common Configuration.nix
+                    ./configuration.nix
+                    # Device-specific configuration
+                    ./computers/a31nix-config.nix
+                    # Noctalia
+                    ./noctalia.nix
 
-                # Home Manager
-                home-manager.nixosModules.home-manager {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.a31nesta = ./a31nesta/home.nix;
-                }
-            ];
+                    # Home Manager
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.a31nesta = ./users/a31nesta/home.nix;
+                    }
+                ];
+            };
+            # Virtual machines
+            a31nix-vm = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
+                modules = [
+                    # Common Configuration.nix
+                    ./configuration.nix
+                    # Device-specific configuration
+                    ./computers/a31nix-vm-config.nix
+                    # Noctalia
+                    ./noctalia.nix
+
+                    # Home Manager
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.a31nesta = ./users/a31nesta/home.nix;
+                    }
+                ];
+            };
+            # Old Laptop
+            bos-s3 = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
+                modules = [
+                    # Common Configuration.nix
+                    ./configuration.nix
+                    # Device-specific configuration
+                    ./computers/bos-s3-config.nix
+                    # Noctalia
+                    ./noctalia.nix
+
+                    # Home Manager
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.a31nesta = ./users/a31nesta/home.nix;
+                    }
+                ];
+            };
         };
     };
 }
