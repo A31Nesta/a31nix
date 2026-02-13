@@ -11,4 +11,19 @@
       ]
     ))
   ];
+
+  # I need this, my controller is kinda mappingless (in retroarch)
+  nixpkgs.overlays = [
+    # Stolen from here: https://wiki.nixos.org/wiki/RetroArch
+    (final: prev: {
+      retroarch-joypad-autoconfig = prev.retroarch-joypad-autoconfig.overrideAttrs {
+        src = prev.fetchFromGitHub {
+          owner = "a31nesta";
+          repo = "retroarch-joypad-autoconfig";
+          rev = "8e462b2c51d06cda352369ea7b2fa225cfd24078";
+          hash = "sha256-hAuybdIl86ySSk3PmCihjC/jfgr1irSEZOPGYsjXDH8=";
+        };
+      };
+    })
+  ];
 }
