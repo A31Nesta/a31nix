@@ -54,9 +54,10 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # Niri :)
+  # Niri and other config
   programs.niri.enable = true;
   security.polkit.enable = true;
+  programs.fish.enable = true;
 
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
@@ -92,7 +93,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.a31nesta = {
     isNormalUser = true;
-    description = "a31nesta";
+    description = "A31Nesta";
+    shell = pkgs.fish;
     extraGroups = [
       "networkmanager"
       "wheel"

@@ -32,12 +32,23 @@
     size = 42;
   };
 
-  # Aliases
+  # Aliases and Shell Config
   home.shellAliases = {
     nrs = "nixos-rebuild switch --flake ~/.dotfiles/a31nix/";
     nfu = "nix flake update --flake ~/.dotfiles/a31nix/";
   };
-  programs.bash.shellAliases = config.home.shellAliases;
+  programs.fish = {
+    shellAliases = config.home.shellAliases;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+      {
+        name = "pure";
+        src = pkgs.fishPlugins.pure.src;
+      }
+    ];
+  };
 
   # Git Config
   programs.git = {

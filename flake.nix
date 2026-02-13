@@ -46,8 +46,10 @@
             ./configuration.nix
             # Device-specific configuration
             ./computers/a31nix-config.nix
+            # Engineer Gaming
+            ./programs/gaming.nix
             # Noctalia, Zen...
-            ./flake-programs/general.nix
+            ./programs/flake-general.nix
 
             # Home Manager
             home-manager.nixosModules.home-manager
@@ -68,7 +70,7 @@
             # Device-specific configuration
             ./computers/a31nix-vm-config.nix
             # Noctalia
-            ./flake-programs/general.nix
+            ./programs/flake-general.nix
 
             # Home Manager
             home-manager.nixosModules.home-manager
@@ -89,7 +91,7 @@
             # Device-specific configuration
             ./computers/bos-s3-config.nix
             # Noctalia
-            ./flake-programs/general.nix
+            ./programs/flake-general.nix
 
             # Home Manager
             home-manager.nixosModules.home-manager
