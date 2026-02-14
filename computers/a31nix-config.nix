@@ -5,9 +5,6 @@
     ./a31nix-hardware.nix
   ];
 
-  # Hostname
-  networking.hostName = "a31nix";
-
   # Nvidia config in main PC only
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];

@@ -5,6 +5,11 @@
 { pkgs, ... }:
 
 {
+  # Configurations in other files
+  imports = [
+    ./programs/shell.nix
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -57,7 +62,6 @@
   # Niri and other config
   programs.niri.enable = true;
   security.polkit.enable = true;
-  programs.fish.enable = true;
 
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
@@ -131,8 +135,6 @@
     wget
     home-manager
     xwayland-satellite
-    # vlc      # Configure these in home-manager
-    # obsidian
   ];
 
   # Fix for Laptop, shouldn't be necessary

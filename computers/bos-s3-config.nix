@@ -1,11 +1,9 @@
-{ ... }: {
+{ ... }:
+{
   # Hardware Config
   imports = [
     ./bos-s3-hardware.nix
   ];
-
-  # Hostname
-  networking.hostName = "bos-s3";
 
   # State Version
   # -------------

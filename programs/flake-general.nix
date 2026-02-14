@@ -10,5 +10,6 @@ in
   environment.systemPackages = [
     inputs.noctalia.packages.${sys}.default
     inputs.zen-browser.packages.${sys}.default
+    inputs.blender-bin.packages.${sys}.default
   ];
 }

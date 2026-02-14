@@ -1,11 +1,9 @@
-{ ... }: {
+{ ... }:
+{
   # Hardware Config
   imports = [
     ./a31nix-vm-hardware.nix
   ];
-
-  # Hostname
-  networking.hostName = "a31nix-vm";
 
   # State Version
   # -------------

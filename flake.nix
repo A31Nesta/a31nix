@@ -26,6 +26,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Blender with CUDA (bin)
+    # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
   outputs =
@@ -35,71 +39,59 @@
       home-manager,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+
+      commonModules = [
+        # Common config
+        ./configuration.nix
+        # Noctalia, Zen, Blender...
+        ./programs/flake-general.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.a31nesta = ./users/a31nesta/home.nix;
+        }
+      ];
+
+      # Function to create a host by only focusing on the different files per host
+      mkHost =
+        {
+          hostname,
+          hostModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ hostModules ++ [ { networking.hostName = hostname; } ];
+        };
+    in
     {
       nixosConfigurations = {
         # Main system
-        a31nix = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Common Configuration.nix
-            ./configuration.nix
+        a31nix = mkHost {
+          hostname = "a31nix";
+          hostModules = [
             # Device-specific configuration
             ./computers/a31nix-config.nix
-            # Engineer Gaming
+            # Engineer Gaming (main PC only)
             ./programs/gaming.nix
-            # Noctalia, Zen...
-            ./programs/flake-general.nix
-
-            # Home Manager
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.a31nesta = ./users/a31nesta/home.nix;
-            }
           ];
         };
         # Virtual machines
-        a31nix-vm = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Common Configuration.nix
-            ./configuration.nix
-            # Device-specific configuration
+        a31nix-vm = mkHost {
+          hostname = "a31nix-vm";
+          hostModules = [
             ./computers/a31nix-vm-config.nix
-            # Noctalia
-            ./programs/flake-general.nix
-
-            # Home Manager
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.a31nesta = ./users/a31nesta/home.nix;
-            }
           ];
         };
         # Old Laptop
-        bos-s3 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Common Configuration.nix
-            ./configuration.nix
-            # Device-specific configuration
+        bos-s3 = mkHost {
+          hostname = "bos-s3";
+          hostModules = [
             ./computers/bos-s3-config.nix
-            # Noctalia
-            ./programs/flake-general.nix
-
-            # Home Manager
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.a31nesta = ./users/a31nesta/home.nix;
-            }
           ];
         };
       };
