@@ -21,7 +21,20 @@
     vlc
     bitwarden-desktop
     affine
+    fluffychat
+    element-desktop
   ];
+
+  # Dark Theme in GTK
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
 
   # Cursor
   home.pointerCursor = {

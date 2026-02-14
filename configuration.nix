@@ -68,6 +68,8 @@
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
