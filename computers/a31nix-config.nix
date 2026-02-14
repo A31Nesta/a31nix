@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Hardware Config
   imports = [
@@ -11,6 +11,10 @@
   hardware.nvidia.open = true;
   # Wayland with Nvidia
   hardware.nvidia.modesetting.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    ntfs3g
+  ];
 
   # State Version
   # -------------

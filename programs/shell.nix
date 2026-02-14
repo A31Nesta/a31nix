@@ -2,8 +2,8 @@
 {
   # Aliases
   environment.shellAliases = {
-    nrs = "nixos-rebuild switch --flake ~/.dotfiles/a31nix/";
-    nfu = "nix flake update --flake ~/.dotfiles/a31nix/";
+    nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/a31nix/";
+    nfu = "sudo nix flake update --flake ~/.dotfiles/a31nix/";
   };
 
   # Fihh config
