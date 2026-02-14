@@ -9,8 +9,15 @@
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
+  # Eep mode
+  hardware.nvidia.powerManagement.enable = true;
   # Wayland with Nvidia
   hardware.nvidia.modesetting.enable = true;
+
+  # Maybe fixes eep mode for real this time??
+  systemd.services.systemd-suspend.environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
 
   environment.systemPackages = with pkgs; [
     ntfs3g
