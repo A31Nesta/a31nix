@@ -30,6 +30,10 @@
     # Blender with CUDA (bin)
     # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+
+    # Dolphin Overlay
+    # https://github.com/rumboon/dolphin-overlay
+    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
   };
 
   outputs =
@@ -47,6 +51,9 @@
         ./configuration.nix
         # Noctalia, Zen, Blender...
         ./programs/flake-general.nix
+
+        # Dolphin Overlay
+        { nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ]; }
 
         home-manager.nixosModules.home-manager
         {

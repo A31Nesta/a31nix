@@ -139,6 +139,13 @@
     wget
     home-manager
     xwayland-satellite
+    file
+
+    kdePackages.plasma-workspace
+    kdePackages.kservice
+    kdePackages.kio
+    kdePackages.qtsvg
+    kdePackages.dolphin
   ];
 
   # Fix for Laptop, shouldn't be necessary

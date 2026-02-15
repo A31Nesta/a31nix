@@ -12,8 +12,6 @@
 
   home.packages = with pkgs; [
     kitty
-    kdePackages.qtsvg
-    kdePackages.dolphin
     zed-editor
     nil
     nixd
@@ -53,6 +51,33 @@
       user.email = "a31nesta@black.observer";
     };
   };
+
+  # Default apps
+  xdg = {
+    enable = true;
+    terminal-exec = {
+      enable = true;
+      settings = {
+        default = [
+          "kitty.desktop"
+        ];
+      };
+    };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = "zen.desktop";
+        "text/x-shellscript" = "dev.zed.Zed.desktop";
+        "application/x-shellscript" = "dev.zed.Zed.desktop";
+      };
+    };
+  };
+  # Stupid-ass dolphin fucking everything up
+  home.file.".config/kdeglobals".text = ''
+    [General]
+    TerminalApplication=kitty
+    TerminalService=kitty.desktop
+  '';
 
   home.file.".config/niri/config.kdl".source = ./config.kdl;
 }
