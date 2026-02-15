@@ -71,6 +71,22 @@
         "application/x-shellscript" = "dev.zed.Zed.desktop";
       };
     };
+
+    # Add Zed to Open Folder by adding "inode/directory"
+    desktopEntries."dev.zed.Zed" = {
+      name = "Zed";
+      exec = "zeditor %U";
+      icon = "zed";
+      type = "Application";
+      mimeType = [
+        "inode/directory"
+
+        "text/plain"
+        "application/x-zerosize"
+        "x-scheme-handler/zed"
+      ];
+      categories = [ "Development" ];
+    };
   };
   # Stupid-ass dolphin fucking everything up
   home.file.".config/kdeglobals".text = ''

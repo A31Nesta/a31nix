@@ -68,6 +68,9 @@
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
 
+  # For development shells :)
+  programs.direnv.enable = true;
+
   services.gnome.gnome-keyring.enable = true;
 
   # Configure keymap in X11
@@ -147,6 +150,9 @@
     kdePackages.qtsvg
     kdePackages.dolphin
   ];
+
+  # For Zed LSPs to work we enable this:
+  programs.nix-ld.enable = true;
 
   # Fix for Laptop, shouldn't be necessary
   # environment.variables = {
