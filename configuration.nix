@@ -64,6 +64,7 @@
   # Niri and other config
   programs.niri.enable = true;
   security.polkit.enable = true;
+  services.libinput.enable = true;
 
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
@@ -143,6 +144,9 @@
     home-manager
     xwayland-satellite
     file
+
+    weston # For calibration and other tools
+    libinput
 
     kdePackages.plasma-workspace
     kdePackages.kservice
