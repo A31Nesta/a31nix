@@ -3,6 +3,11 @@
   # Controller driver
   hardware.xpadneo.enable = true;
 
+  # Water (but gas)
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     # PSX Emulation (Silent Hill)
     (retroarch.withCores (
@@ -10,6 +15,12 @@
         swanstation
       ]
     ))
+    # Engineer Gaming
+    mangohud
+    protonup-qt
+    lutris
+    bottles
+    heroic
   ];
 
   # I need this, my controller is kinda mappingless (in retroarch)

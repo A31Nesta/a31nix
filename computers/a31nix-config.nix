@@ -5,8 +5,26 @@
     ./a31nix-hardware.nix
   ];
 
+  # Enable hardware graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    # Extra packages for 64-bit
+    extraPackages = with pkgs; [
+      mesa
+      vulkan-loader
+      libGL
+      libGLU # for very old pre-2005 OpenGL games
+    ];
+    # Extra packages for 32-bit
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      mesa
+      vulkan-loader
+      libGL
+      libGLU
+    ];
+  };
   # Nvidia config in main PC only
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
   # Eep mode
