@@ -1,6 +1,6 @@
 # NixOS if it was bad
 
-A NixOS config made by an (ex-?? maybe?)Arch user by the way.
+My NixOS (by the way) configuration.
 
-I just think that having a public repo with no readme is weird so here is
-some filler text.
+Just a NixOS flake-based configuration with Niri, Noctalia, Fish
+and some other boring system-configuration stuff.
