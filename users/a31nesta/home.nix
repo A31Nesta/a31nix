@@ -21,6 +21,8 @@
     affine
     fluffychat
     element-desktop
+
+    feishin
   ];
 
   # Dark Theme in GTK
