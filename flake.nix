@@ -85,6 +85,9 @@
             ./computers/a31nix-config.nix
             # Engineer Gaming (main PC only)
             ./programs/gaming.nix
+            # Vial
+            ./programs/keyboard.nix
+
           ];
         };
         # Virtual machines
