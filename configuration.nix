@@ -144,6 +144,7 @@
     home-manager
     xwayland-satellite
     file
+    nix-sweep
 
     weston # For calibration and other tools
     libinput
