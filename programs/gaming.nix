@@ -21,6 +21,8 @@
     lutris
     bottles
     heroic
+    # Minecraft
+    prismlauncher
   ];
 
   # I need this, my controller is kinda mappingless (in retroarch)

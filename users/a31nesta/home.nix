@@ -23,6 +23,7 @@
     element-desktop
 
     feishin
+    qimgv
   ];
 
   # Dark Theme in GTK

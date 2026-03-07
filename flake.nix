@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hyprland (latest)
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # TODO: Remove this when HDR gets fixed
+    hyprland.url = "github:hyprwm/Hyprland?rev=8685fd7b0c2afe06c798554dea80c53f98d73894";
+
     # Zen Browser
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -87,7 +92,8 @@
             ./programs/gaming.nix
             # Vial
             ./programs/keyboard.nix
-
+            # Maybe it's actually stable in NixOS
+            ./programs/hyprland.nix
           ];
         };
         # Virtual machines

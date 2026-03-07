@@ -59,7 +59,12 @@
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # services.desktopManager.gnome.enable = true;
+
+  # Enable the COSMIC desktop environment
+  # services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  services.system76-scheduler.enable = true;
 
   # Niri and other config
   programs.niri.enable = true;
@@ -173,6 +178,13 @@
   # };
 
   # List services that you want to enable:
+  services.flatpak.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config.common.default = "gtk";
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
