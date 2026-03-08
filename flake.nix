@@ -103,13 +103,6 @@
             ./computers/a31nix-vm-config.nix
           ];
         };
-        # Old Laptop
-        bos-s3 = mkHost {
-          hostname = "bos-s3";
-          hostModules = [
-            ./computers/bos-s3-config.nix
-          ];
-        };
       };
     };
 }

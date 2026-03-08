@@ -15,6 +15,7 @@
     zed-editor
     nil
     nixd
+    postman
 
     vlc
     bitwarden-desktop

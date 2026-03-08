@@ -190,8 +190,11 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    3000
+    5173
+  ];
+  networking.firewall.allowedUDPPorts = [ 10137 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }
