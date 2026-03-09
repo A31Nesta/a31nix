@@ -159,6 +159,8 @@
     kdePackages.kio
     kdePackages.qtsvg
     kdePackages.dolphin
+
+    pkgsRocm.blender
   ];
 
   # For Zed LSPs to work we enable this:

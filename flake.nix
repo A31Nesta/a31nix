@@ -34,7 +34,7 @@
 
     # Blender with CUDA (bin)
     # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
-    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+    # blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
     # Dolphin Overlay
     # https://github.com/rumboon/dolphin-overlay
