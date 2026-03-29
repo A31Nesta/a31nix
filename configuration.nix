@@ -151,8 +151,14 @@
     file
     nix-sweep
 
+    # Unzip files in Dolphin
+    zip
+    unzip
+    kdePackages.ark
+
     weston # For calibration and other tools
     libinput
+    gparted
 
     kdePackages.plasma-workspace
     kdePackages.kservice

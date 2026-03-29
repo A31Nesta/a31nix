@@ -25,6 +25,10 @@
     ];
   };
 
+  hardware.amdgpu = {
+    opencl.enable = true;
+  };
+
   # Maybe fixes eep mode for real this time??
   systemd.services.systemd-suspend.environment = {
     SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";

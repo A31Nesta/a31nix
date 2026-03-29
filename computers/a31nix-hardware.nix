@@ -43,14 +43,12 @@
   fileSystems."/mnt/HDDExt4" = {
     device = "/dev/disk/by-uuid/42f085a9-e524-411a-b2b5-ed2d33f98a8a";
     fsType = "ext4";
+    options = [ "nofail" ];
   };
   fileSystems."/mnt/HDDNTFS" = {
     device = "/dev/disk/by-label/Seagate";
     fsType = "ntfs-3g";
-  };
-  fileSystems."/mnt/ArchRoot" = {
-    device = "/dev/disk/by-uuid/d206064f-0a52-4aae-b2c3-0fb395157689";
-    fsType = "ext4";
+    options = [ "nofail" ];
   };
 
   swapDevices = [ ];

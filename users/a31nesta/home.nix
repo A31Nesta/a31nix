@@ -22,9 +22,12 @@
     affine
     fluffychat
     element-desktop
+    telegram-desktop
 
     feishin
     qimgv
+
+    grimblast
   ];
 
   # Dark Theme in GTK
