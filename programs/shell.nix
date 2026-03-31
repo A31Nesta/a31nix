@@ -3,6 +3,7 @@
   # Aliases
   environment.shellAliases = {
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/a31nix/";
+    nrt = "sudo nixos-rebuild test --flake ~/.dotfiles/a31nix/";
     nfu = "sudo nix flake update --flake ~/.dotfiles/a31nix/";
   };
 
