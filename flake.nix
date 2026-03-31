@@ -92,6 +92,8 @@
             ./programs/gaming.nix
             # Vial
             ./programs/keyboard.nix
+            # OpenRGB
+            ./programs/openrgb.nix
             # Maybe it's actually stable in NixOS
             ./programs/hyprland.nix
           ];

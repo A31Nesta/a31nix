@@ -25,6 +25,15 @@
     prismlauncher
   ];
 
+  # Add sunshine and rainbows
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true; # only needed for Wayland
+    openFirewall = true;
+  };
+  # services.rainbows.enable = true;
+
   # I need this, my controller is kinda mappingless (in retroarch)
   nixpkgs.overlays = [
     # Stolen from here: https://wiki.nixos.org/wiki/RetroArch
