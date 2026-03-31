@@ -59,13 +59,6 @@
 
         # Dolphin Overlay
         { nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ]; }
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.a31nesta = ./users/a31nesta/home.nix;
-        }
       ];
 
       # Function to create a host by only focusing on the different files per host
@@ -77,7 +70,25 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
-          modules = commonModules ++ hostModules ++ [ { networking.hostName = hostname; } ];
+          modules =
+            # Add common configs
+            commonModules
+            ++
+              # Plus the per-device Home Manager configuration
+              [
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.a31nesta = ./users/a31nesta/${hostname}-home.nix;
+                }
+              ]
+            ++
+              # Plus the modules that are specific to that host
+              hostModules
+            ++
+              # Plus a small config to set the hostname
+              [ { networking.hostName = hostname; } ];
         };
     in
     {
@@ -88,7 +99,7 @@
           hostModules = [
             # Device-specific configuration
             ./computers/a31nix-config.nix
-            # Engineer Gaming (main PC only)
+            # Engineer Gaming
             ./programs/gaming.nix
             # Vial
             ./programs/keyboard.nix
@@ -98,11 +109,14 @@
             ./programs/hyprland.nix
           ];
         };
-        # Virtual machines
-        a31nix-vm = mkHost {
-          hostname = "a31nix-vm";
+        # Laptop configuration, same same but different config
+        a31rye = mkHost {
+          hostname = "a31rye";
           hostModules = [
-            ./computers/a31nix-vm-config.nix
+            ./computers/a31rye-config.nix
+            ./programs/gaming.nix
+            ./programs/keyboard.nix
+            ./programs/hyprland.nix
           ];
         };
       };

@@ -1,0 +1,46 @@
+{ pkgs, ... }:
+{
+  # Hardware Config
+  imports = [
+    ./a31rye-hardware.nix
+  ];
+
+  # Enable hardware graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    # Extra packages for 64-bit
+    extraPackages = with pkgs; [
+      mesa
+      vulkan-loader
+      libGL
+      libGLU # for very old pre-2005 OpenGL games
+    ];
+    # Extra packages for 32-bit
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      mesa
+      vulkan-loader
+      libGL
+      libGLU
+    ];
+  };
+
+  hardware.amdgpu = {
+    opencl.enable = true;
+  };
+
+  # Maybe fixes eep mode for real this time??
+  systemd.services.systemd-suspend.environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
+
+  # State Version
+  # -------------
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "25.11"; # Did you read the comment?
+}
