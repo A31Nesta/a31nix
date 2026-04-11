@@ -107,6 +107,8 @@
             ./programs/openrgb.nix
             # Maybe it's actually stable in NixOS
             ./programs/hyprland.nix
+            # Embedded development
+            ./programs/embedded.nix
           ];
         };
         # Laptop configuration, same same but different config
@@ -117,6 +119,7 @@
             ./programs/gaming.nix
             ./programs/keyboard.nix
             ./programs/hyprland.nix
+            ./programs/embedded.nix
           ];
         };
       };

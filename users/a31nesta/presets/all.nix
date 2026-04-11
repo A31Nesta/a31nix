@@ -7,6 +7,7 @@
     ../modules/programs/extra-graphic.nix
     ../modules/programs/development.nix
     ../modules/programs/communications.nix
+    ../modules/programs/artistic.nix
 
     # Configure Git for this user
     ../modules/git.nix

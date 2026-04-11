@@ -1,6 +1,3 @@
-# NixOS if it was bad
+# Some guy's NixOS config
 
-My NixOS (by the way) configuration.
-
-Just a NixOS flake-based configuration with Niri, Noctalia, Fish
-and some other boring system-configuration stuff.
+A whole bunch of nix files that do stuff on the puter I think.
