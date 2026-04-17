@@ -109,6 +109,8 @@
             ./programs/hyprland.nix
             # Embedded development
             ./programs/embedded.nix
+            # Slop Generator
+            ./programs/slop.nix
           ];
         };
         # Laptop configuration, same same but different config
