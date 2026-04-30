@@ -2,7 +2,6 @@
   description = "A31Nesta's NixOS Configuration";
 
   inputs = {
-    # Using unstable because of Quickshell and Noctalia lmao
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager
@@ -23,8 +22,7 @@
 
     # Hyprland (latest)
     # hyprland.url = "github:hyprwm/Hyprland";
-    # TODO: Remove this when HDR gets fixed
-    hyprland.url = "github:hyprwm/Hyprland?rev=8685fd7b0c2afe06c798554dea80c53f98d73894";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # Zen Browser
     zen-browser = {
@@ -32,13 +30,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Blender with CUDA (bin)
-    # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
-    # blender-bin.url = "github:edolstra/nix-warez?dir=blender";
-
     # Dolphin Overlay
     # https://github.com/rumboon/dolphin-overlay
     dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+
+    # Solaar, for Logitech mice (swapping DPI and Middle Click buttons to make middle click last longer)
+    solaar = {
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -111,6 +111,13 @@
             ./programs/embedded.nix
             # Slop Generator
             ./programs/slop.nix
+
+            # My fucking computer is dying, what the fuck
+            ./programs/imploding.nix
+
+            # Solaar configuration
+            inputs.solaar.nixosModules.default
+            ./programs/solaar.nix
           ];
         };
         # Laptop configuration, same same but different config
