@@ -59,6 +59,17 @@
 
         # Dolphin Overlay
         { nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ]; }
+
+        # OVERLAY TO MAKE LDAP WORK, REMOVE LATER!
+        {
+          nixpkgs.overlays = [
+            (_: prev: {
+              openldap = prev.openldap.overrideAttrs {
+                doCheck = !prev.stdenv.hostPlatform.isi686;
+              };
+            })
+          ];
+        }
       ];
 
       # Function to create a host by only focusing on the different files per host
