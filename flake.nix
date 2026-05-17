@@ -32,7 +32,7 @@
 
     # Dolphin Overlay
     # https://github.com/rumboon/dolphin-overlay
-    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+    # dolphin-overlay.url = "github:rumboon/dolphin-overlay";
 
     # Solaar, for Logitech mice (swapping DPI and Middle Click buttons to make middle click last longer)
     solaar = {
@@ -58,7 +58,7 @@
         ./programs/flake-general.nix
 
         # Dolphin Overlay
-        { nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ]; }
+        # { nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ]; }
 
         # OVERLAY TO MAKE LDAP WORK, REMOVE LATER!
         {
