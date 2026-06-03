@@ -21,5 +21,8 @@
     # Add Niri and Hyprland configurations
     ../modules/niri.nix
     ../modules/hyprland.nix
+
+    # Import the extra environment variables and fixes
+    ../modules/envs-fixes/gulikit-bluetooth-sdl.nix
   ];
 }
