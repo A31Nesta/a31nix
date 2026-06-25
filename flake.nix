@@ -123,6 +123,8 @@
             ./programs/embedded.nix
             # Slop Generator
             ./programs/slop.nix
+            # Android development and shit
+            ./programs/android.nix
 
             # My fucking computer is dying, what the fuck
             ./programs/imploding.nix

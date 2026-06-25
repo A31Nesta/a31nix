@@ -119,6 +119,7 @@
       "uucp"
       "plugdev"
       "dialout"
+      "kvm"
     ];
   };
 
