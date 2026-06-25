@@ -274,7 +274,7 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
 // spawn-at-startup "ags" "--gtk" "3" "run"
 
-spawn-sh-at-startup "noctalia-shell"
+spawn-sh-at-startup "noctalia"
 // spawn-at-startup "qs -c caelestia"
 // spawn-at-startup "qs -c niri-caelestia-shell"
 
@@ -402,10 +402,10 @@ binds {
     // Mod+A { spawn "fuzzel"; }
 
     // NOCTALIA
-    Mod+A { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-    Mod+V { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
-    Super+Alt+L { spawn-sh "noctalia-shell ipc call lockScreen toggle"; }
-    Super+Backspace { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+A { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+V { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Super+Alt+L { spawn-sh "noctalia msg session lock"; }
+    Super+Backspace { spawn-sh "noctalia msg panel-toggle session"; }
     // CAELESTIA
     // Mod+A { spawn "bash" "-c" "qs -c caelestia ipc call drawers toggle launcher"; }
     // // Mod+V { spawn "bash" "-c" "qs -c caelestia ipc call"; }
