@@ -132,6 +132,9 @@
             # Solaar configuration
             inputs.solaar.nixosModules.default
             ./programs/solaar.nix
+
+            # I2P :)
+            ./programs/i2p.nix
           ];
         };
         # Laptop configuration, same same but different config
